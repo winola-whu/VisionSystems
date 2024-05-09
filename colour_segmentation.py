@@ -6,7 +6,7 @@ from timeit import timeit
 
 
 # Load Image
-img = imread('cones1.jpeg')[:, :, :3]
+img = imread('cones2.jpeg')[:, :, :3]
 img_hsv = rgb2hsv(img)
 
 
@@ -24,9 +24,9 @@ def segment(lower, upper, saturation, img_hsv):
     return cones_masked
 
 
-iter = 1000
-total_time = timeit("segment(0.6, 0.7, 0.3, img_hsv)", number=iter, globals=globals())
-print(f"Average time is {total_time / iter:.2f} seconds")
+iter = 100
+#total_time = timeit("segment(0.6, 0.7, 0.3, img_hsv)", number=iter, globals=globals())
+#print(f"Average time is {total_time / iter:.2f} seconds")
 
 plt.imshow(segment(0.6, 0.7, 0.3, img_hsv))
 plt.title('Segmented Blue Cones')
@@ -34,6 +34,11 @@ plt.axis('off')
 plt.show()
 
 plt.imshow(segment(0.1, 0.2, 0.6, img_hsv))
-plt.title('Segmented Blue Cones')
+plt.title('Segmented Yellow Cones')
+plt.axis('off')
+plt.show()
+
+plt.imshow(segment(0.0, 0.1, 0.5, img_hsv))
+plt.title('Segmented Orange Cones')
 plt.axis('off')
 plt.show()
