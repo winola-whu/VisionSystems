@@ -2,3 +2,5 @@ numpy
 scipy
 opencv-python
 ultralytics
+scikit-image
+matplotlib
