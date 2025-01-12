@@ -6,7 +6,7 @@ from timeit import timeit
 
 
 # Load Image
-img = imread('cones2.jpeg')[:, :, :3]
+img = imread('hard_case_2.png')[:, :, :3]
 img_hsv = rgb2hsv(img)
 
 
@@ -20,6 +20,8 @@ def segment(lower, upper, saturation, img_hsv):
     green = img[:, :, 1] * mask
     blue = img[:, :, 2] * mask
     cones_masked = np.dstack((red, green, blue))
+    plt.imshow(img_hsv[:, :, 0], cmap='hsv')
+    plt.colorbar()
 
     return cones_masked
 
@@ -27,6 +29,9 @@ def segment(lower, upper, saturation, img_hsv):
 iter = 100
 #total_time = timeit("segment(0.6, 0.7, 0.3, img_hsv)", number=iter, globals=globals())
 #print(f"Average time is {total_time / iter:.2f} seconds")
+plt.imshow(img_hsv)
+plt.colorbar()
+plt.show()
 
 plt.imshow(segment(0.6, 0.7, 0.3, img_hsv))
 plt.title('Segmented Blue Cones')
